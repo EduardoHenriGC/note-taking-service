@@ -1,0 +1,9 @@
+[90m= [39m[34;4mApp\Models\Product[39;24m {#5187
+    [34mname[39m: "[32mProduto A[39m",
+    [34mprice[39m: [33m100.0[39m,
+    [34mdescription[39m: "[32mDescrição do Produto A[39m",
+    [34mupdated_at[39m: "[32m2025-01-21 18:56:30[39m",
+    [34mcreated_at[39m: "[32m2025-01-21 18:56:30[39m",
+    [34mid[39m: [35m1[39m,
+  }
+
