@@ -38,6 +38,7 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+     
     protected function casts(): array
     {
         return [
@@ -49,5 +50,11 @@ class User extends Authenticatable
     public function isAdm(): bool
     {
         return in_array($this->email, config('custom.admins'));
+    }
+
+    // Relação com notas
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
     }
 }

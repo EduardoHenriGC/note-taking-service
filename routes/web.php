@@ -7,6 +7,19 @@ use App\Http\Middleware\CheckIfIsAdmin;
 use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\NoteTagController;
+
+
+Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
+Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create');
+Route::post('/tags', [TagController::class, 'store'])->name('tags.store');
+Route::get('/tags/{tagId}/notes', [NoteTagController::class, 'index'])->name('tags.notes');
+Route::delete('/tags/{id}', [TagController::class, 'destroy'])->name('tags.destroy');
+
+Route::get('/notes/{noteId}/add-tag', [NoteTagController::class, 'addTagForm'])->name('notes.addTagForm');
+Route::post('/notes/{noteId}/add-tag', [NoteTagController::class, 'addTagToNote'])->name('notes.addTagToNote');
+Route::delete('/tags/{tagId}/notes/{noteId}', [NoteTagController::class, 'removeTagFromNote'])->name('tags.notes.remove');
 
 
 
@@ -41,10 +54,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/notes', [NoteController::class, 'index'])->name('notes.index');
+    Route::get('/notes/create', [NoteController::class, 'create'])->name('notes.create');
+    Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
+   
 });
 
 require __DIR__ . '/auth.php';

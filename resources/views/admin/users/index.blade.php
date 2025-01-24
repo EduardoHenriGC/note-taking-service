@@ -3,7 +3,14 @@
 @section('title', 'Listagem dos Usuários')
 
 @section('content')
-    @include('admin.users.partials.breadcrumb')
+@php
+    $breadcrumbs = [
+        ['label' => 'Home', 'url' => route('dashboard')],
+        ['label' => 'Usuários', 'url' => route('users.index')],
+    ];
+@endphp
+
+@include('admin.users.partials.breadcrumb')
     <div class="py-1 mb-4">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-4">
             Usuários

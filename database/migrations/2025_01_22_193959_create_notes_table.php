@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('note_tag', function (Blueprint $table) {
+        Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('note_id')->constrained()->onDelete('cascade');
-            $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Cria a chave estrangeira
+            $table->text('content'); // Conteúdo da nota
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('note_tag');
+        Schema::dropIfExists('notes');
     }
 };

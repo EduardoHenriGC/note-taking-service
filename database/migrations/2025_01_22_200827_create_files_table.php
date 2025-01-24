@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('note_id')->constrained()->onDelete('cascade');
-            $table->string('file_path');
-            $table->string('file_type');
+            $table->foreignId('note_id')->constrained()->onDelete('cascade'); // Relaciona com a nota
+            $table->string('file_path'); // Caminho do arquivo
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
