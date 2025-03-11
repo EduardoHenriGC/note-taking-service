@@ -58,7 +58,17 @@ Gere a key do projeto Laravel
 ```sh
 php artisan key:generate
 ```
-
+Rodar as migration
+```sh
+php artisan migrate
+```
+Instalar as dependencias do NPM fora do container do docker!! na pasta do raiz do projeto
+```sh
+npm install
+```
 
 Acesse o projeto
-[http://localhost:8989](http://localhost:8989)
+```sh
+npm run dev
+```
+
